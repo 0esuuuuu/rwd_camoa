@@ -113,4 +113,40 @@ $(function () {
 
   programInfoSlider.controller.control = programPostSlider;
   programPostSlider.controller.control = programInfoSlider;
+
+  // collection slider
+  var collectionoSlider = new Swiper('.collection_slider', {
+    loop: true,
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true,
+    },
+    speed: 500,
+    slidesPerView: 'auto',
+    autoplay: {
+      delay: 5000,
+    },
+
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+
+  $('.collection_wrap .btn_pause').on('click', function () {
+    $(this).toggleClass('on');
+
+    if ($(this).hasClass('on')) {
+      $(this).html('재생하기');
+      collectionoSlider.autoplay.stop();
+    } else {
+      $(this).html('일시정지');
+      collectionoSlider.autoplay.start();
+    }
+  });
+
+  // footer
+  $('#footer .btn_family').on('click', function () {
+    $(this).next().toggleClass('on');
+  });
 });

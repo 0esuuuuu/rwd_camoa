@@ -345,3 +345,154 @@
 .program_post_slider .btn_link img {
   height: 100%;
 }
+
+/* main_etc */
+.main_etc {
+  padding: 162px 0 178px;
+}
+.main_etc .inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 74px;
+}
+.main_etc .collection_wrap {
+  width: 639px;
+  position: relative;
+}
+
+.collection_wrap .sc_tit {
+  margin-bottom: 49px;
+}
+.collection_slider .swiper-slide {
+  width: 639px;
+}
+.collection_slider a {
+  display: block;
+  height: 444px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+.collection_slider .img_wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fafafa;
+  border-width: 1px 1px 0 1px;
+  border-color: #f9f9f9;
+  border-style: solid;
+}
+.collection_slider img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+}
+
+.collection_slider .card_wrap {
+  position: absolute;
+  left: 0;
+  bottom: -60px;
+  width: 100%;
+  height: 60px;
+  background: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.collection_slider:hover .card_wrap {
+  bottom: 0;
+  opacity: 1;
+}
+.collection_slider .card_wrap .txt_wrap {
+  color: #fff;
+  line-height: 1;
+  font-size: 1.8rem;
+}
+.collection_slider .card_wrap .txt_wrap em {
+  font-weight: 700;
+  margin-right: 4px;
+}
+.collection_slider .card_wrap .btn_more02 {
+  color: #fff;
+}
+
+.collection_wrap .slide_control {
+  top: 26px;
+  left: auto;
+  right: 0;
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.collection_wrap .btn_arrow {
+  width: 10px;
+  height: 13px;
+  line-height: 24px;
+  background: url(../images/left_arrow.png) no-repeat 50% 50%;
+}
+.collection_wrap .swiper-button-next {
+  background-image: url(../images/right_arrow.png);
+}
+.collection_wrap .btn_pause:after {
+  background: url(../images/pasue.svg) no-repeat;
+}
+.collection_wrap .btn_pause.on:after {
+  background-image: url(../images/play.svg);
+}
+
+.main_etc .notice_wrap {
+  width: calc(100% - 713px);
+  position: relative;
+}
+.notice_wrap .sc_tit {
+  margin-bottom: 49px;
+}
+.notice_wrap .board_wrap {
+  height: 444px;
+  border-top: 3px solid #282626;
+  border-bottom: 3px solid #282626;
+}
+
+.board_wrap tr {
+  height: 108px;
+  cursor: pointer;
+}
+.board_wrap tr + tr {
+  border-top: 1px dashed rgba(0,0,0,0.2);
+}
+
+.board_wrap .cate {
+  width: 15%;
+  text-align: left;
+}
+.board_wrap .badge {
+  padding: 9px 16px 6px;
+}
+.board_wrap .tbl_tit {
+  width: 69%;
+  letter-spacing: -0.5px;
+}
+.board_wrap .tbl_date {
+  text-align: right;
+  color: #767676;
+  font-size: 2rem;
+}
+
+.notice_wrap .btn_more02 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: none;
+  background: none;
+  margin-right: 6px;
+}
+.notice_wrap .btn_more02:after {
+  background-image: url(../images/right_arrow.png);
+} 
