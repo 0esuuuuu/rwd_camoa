@@ -22,6 +22,9 @@
   letter-spacing: -6px;
 }
 
+.visual_wrap {
+  transition: all 0.4s 0.3s;
+}
 .main_slider .swiper-slide img {
   border-radius: 15px;
 }
@@ -207,8 +210,11 @@
   max-width: none;
   background: #20231F;
   padding: 68px 0 60px;
+}
+.main_program .slider_area {
   display: flex;
   position: relative;
+  transition: all 0.4s 0.3s;
 }
 .main_program .program_info_slider {
   position: relative;

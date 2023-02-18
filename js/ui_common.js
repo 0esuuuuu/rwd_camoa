@@ -2,21 +2,53 @@ $(function () {
   // gnb
   $('#header .gnb_wrap .gnb .depth02_wrap').hide();
   $('.dimmed').hide();
-  $('#header .gnb_wrap .gnb>li>a').on('mouseenter', function () {
+  $('#header .m_util_wrap').hide();
+  $('#header .gnb_wrap .gnb>li').on('mouseenter', function () {
+    $('#header .gnb_wrap').addClass('on');
     $('.dimmed').show();
-    if (!$(this).next().is(':visible')) {
-      $(this).next().slideDown().parent().siblings().find('.depth02_wrap').hide();
-      $(this).next().find('.gnb_tit, .bg_txt, .depth02, .gnb_banner').animate({ opacity: 1 }, 100);
+    if (!$(this).find('.depth02_wrap').is(':visible')) {
+      $(this).find('.depth02_wrap').slideDown().parent().siblings().find('.depth02_wrap').hide();
+      // $(this).find('.depth02_wrap').animate({ opacity: 1 });
     } else {
-      $(this).next().show();
+      $(this).find('.depth02_wrap').show();
     }
+    // $(this).find('.depth02_wrap').slideDown().parent().siblings().find('.depth02_wrap').hide();
   });
 
   $('#header').on('mouseleave', function () {
     $('.dimmed').hide();
-    // $(this).next().find('.gnb_tit, .bg_txt, .depth02, .gnb_banner').animate({ opacity: 0 }, 0);
-    $(this).find('.gnb_tit, .bg_txt, .depth02, .gnb_banner').css({ opacity: 0 });
-    $('#header .gnb_wrap .gnb .depth02_wrap').slideUp();
+    // $(this).find('.depth02_wrap').css({ opacity: 0 });
+    $('#header .gnb_wrap .gnb .depth02_wrap').hide();
+    $('#header .gnb_wrap').removeClass('on');
+  });
+
+  // animate effect
+  $('[class*=animate_fade], [class*=animate_stick]').each(function () {
+    var _this = $('[class*=animate_fade]');
+
+    $(window)
+      .on('scroll', function () {
+        var posY = _this.offset().top;
+        var st = $(this).scrollTop();
+
+        if (st >= 0) {
+          $('.main_visual').find('[class*=animate_stick]').addClass('on');
+        }
+
+        if (st >= posY - $(this).outerHeight() + 350) {
+          $('.main_exhibition').find(_this).addClass('on');
+        }
+        if (st >= posY - $(this).outerHeight() + 1100) {
+          $('.main_program').find(_this).addClass('on');
+        }
+        if (st >= posY - $(this).outerHeight() + 1700) {
+          $('.main_etc').find(_this).addClass('on');
+        }
+        if (st === 0) {
+          _this.removeClass('on');
+        }
+      })
+      .trigger('scroll');
   });
 
   // main slider
