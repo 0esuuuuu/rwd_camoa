@@ -2,35 +2,56 @@ $(function () {
   // gnb
   $('#header .gnb_wrap .gnb .depth02_wrap').hide();
   $('#header .gnb_wrap .gnb>li').on('mouseenter', function () {
-    $('#header .gnb_wrap').addClass('on');
+    // $('#header .gnb').addClass('on');
+    $('#header .gnb').css('height', '377px');
     $('.dimmed').show();
     if (!$(this).find('.depth02_wrap').is(':visible')) {
       $(this).find('.depth02_wrap').slideDown().parent().siblings().find('.depth02_wrap').hide();
-      // $(this).find('.depth02_wrap').animate({ opacity: 1 });
     } else {
       $(this).find('.depth02_wrap').show();
     }
-    // $(this).find('.depth02_wrap').slideDown().parent().siblings().find('.depth02_wrap').hide();
   });
 
   $('#header .gnb_wrap').on('mouseleave', function () {
+    $('#header .gnb').css('height', '64px');
     $('.dimmed').hide();
-    // $(this).find('.depth02_wrap').css({ opacity: 0 });
     $('#header .gnb_wrap .gnb .depth02_wrap').hide();
-    $(this).removeClass('on');
   });
 
   // search_wrap
-  $('#header .util_wrap .btn_search').on('click', function () {
+  $('#header .btn_search').on('click', function () {
     $('body').addClass('on');
     $('.dimmed').show();
     $('#header .search_wrap').show();
   });
 
-  $('#header .search_wrap .btn_close, .dimmed').on('click', function () {
+  $('#header .search_wrap .btn_close').on('click', function () {
     $('body').removeClass('on');
     $('#header .search_wrap').hide();
     $('.dimmed').hide();
+  });
+
+  // m_gnb
+  $('#header .m_util_wrap .btn_menu').on('click', function () {
+    $('.dimmed').show();
+    $('body').addClass('on');
+    $('#header .m_gnb_wrap').addClass('on');
+  });
+
+  $('#header .m_gnb>li').on('click', function () {
+    $(this).addClass('on').siblings().removeClass('on');
+    $(this).find('.depth02').slideDown().parent().siblings().find('.depth02').slideUp();
+  });
+
+  $('#header .m_gnb .depth02>li').on('click', function () {
+    $(this).addClass('on').siblings().removeClass('on');
+    $(this).find('.depth03').slideDown().parent().siblings().find('.depth03').slideUp();
+  });
+
+  $('#header .m_gnb_wrap .btn_close, .dimmed').on('click', function () {
+    $('#header .m_gnb_wrap').removeClass('on');
+    $('.dimmed').hide();
+    $('body').removeClass('on');
   });
 
   // animate effect
