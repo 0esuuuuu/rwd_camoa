@@ -604,9 +604,36 @@
   .notice_wrap .sc_tit{margin-bottom: 25px;}
   .notice_wrap .board_wrap {height: auto;}
   .board_wrap tr {height: 80px;}
-  .board_wrap .cate {width: 8%;}
+  .board_wrap .cate {width: 12%;}
   .board_wrap .tbl_tit {width: 80%;}
   .board_wrap .tbl_date {font-size: 1.6rem;}
+
+
+
+
+
+
+
+
+}
+
+
+/* 모바일(767) */
+@media (max-width: 767px) {
+
+  .main_program .slider_area {flex-direction: column;}
+  .main_program .program_info_slider {height: auto; width: 100%;}
+  .program_info_slider .txt_wrap .pro_tit {font-size: 2.2rem;}
+  .program_info_slider .btn_more {margin-bottom: 25px;}
+
+  .program_post_slider {width: 100%;}
+
+
+  
+  .main_etc {padding-bottom: 80px;}
+
+
+
 
 
 
