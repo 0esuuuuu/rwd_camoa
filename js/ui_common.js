@@ -140,9 +140,9 @@ $(function () {
     speed: 500,
     slidesPerView: 1,
     spaceBetween: 40,
-    // autoplay: {
-    //   delay: 5000,
-    // },
+    autoplay: {
+      delay: 5000,
+    },
 
     pagination: {
       el: '.swiper-pagination',
@@ -179,6 +179,8 @@ $(function () {
   programPostSlider.controller.control = programInfoSlider;
 
   // collection slider
+  var vw = window.innerWidth;
+
   var collectionoSlider = new Swiper('.collection_slider', {
     loop: true,
     effect: 'fade',
@@ -186,9 +188,18 @@ $(function () {
       crossFade: true,
     },
     speed: 500,
-    slidesPerView: 'auto',
+    slidesPerView: 1,
+    spaceBetween: 15,
     autoplay: {
       delay: 5000,
+    },
+    breakpoints: {
+      1000: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+        effect: 'slide',
+        loop: true,
+      },
     },
 
     navigation: {
@@ -196,6 +207,31 @@ $(function () {
       prevEl: '.swiper-button-prev',
     },
   });
+
+  // function responsiveSwiper() {
+  //   if (vw >= 1000) {
+  //     collectionoSlider = new Swiper('.collection_slider', {
+  //       effect: 'fade',
+  //       fadeEffect: {
+  //         crossFade: true,
+  //       },
+  //     });
+  //   } else if (vw < 1000) {
+  //     collectionoSlider = new Swiper('.collection_slider', {
+  //       effect: 'slide',
+  //       fadeEffect: {
+  //         crossFade: false,
+  //       },
+  //       slidesPerView: 2,
+  //     });
+  //   }
+  // }
+  // responsiveSwiper();
+
+  // window.addEventListener('resize', function () {
+  //   vw = this.window.innerWidth;
+  //   responsiveSwiper();
+  // });
 
   $('.collection_wrap .btn_pause').on('click', function () {
     $(this).toggleClass('on');
