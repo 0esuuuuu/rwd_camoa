@@ -1200,6 +1200,9 @@ textarea { width:100%; border:none; background: #f8f8f8; padding:15px;}
   display: flex;
   gap: 7px;
 }
+#footer address {
+  word-break: keep-all;
+}
 
 #footer .policy {
   position: absolute;
@@ -1358,6 +1361,7 @@ textarea { width:100%; border:none; background: #f8f8f8; padding:15px;}
   line-height: 1;
   min-width: 65px;
   transition: all 0.3s;
+  text-align: center;
 }
 
 .btn_more02 {
@@ -1685,11 +1689,37 @@ textarea { width:100%; border:none; background: #f8f8f8; padding:15px;}
 
   #footer .inner {padding: 0 15px; text-align: center; flex-direction: column; justify-content: center; align-items: center;}
   #footer .footer_left {padding-bottom: 179px;}
-  #footer .footer_left .info {justify-content: center;}
+  #footer .footer_left .info {justify-content: center; flex-wrap: wrap;}
   #footer .policy {bottom: 125px; left: 50%; transform: translateX(-50%);}
 
   #footer .footer_right {text-align: center;}
   #footer .footer_right .sns_wrap {margin-top: 38px;}
+
+
+
+
+
+
+}
+
+
+
+@media (max-width: 480px) {
+
+  .sc_tit {font-size: 2.4rem;}
+  .tbl_tit {font-size: 1.4rem;}
+  
+  .badge {font-size: 1.2rem; min-width: 62px; min-height: 24px; padding: 6px 4px; border-radius: 5px;}
+
+
+
+
+
+
+
+
+
+
 
 
 

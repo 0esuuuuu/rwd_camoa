@@ -76,17 +76,18 @@ $(function () {
         if (st >= posY - $(this).outerHeight() + 1700) {
           $('.main_etc').find(_this).addClass('on');
         }
-        if (st === 0) {
-          _this.removeClass('on');
-        }
+        // if (st === 0) {
+        //   _this.removeClass('on');
+        // }
       })
       .trigger('scroll');
   });
 
   // main slider
-  var mainSlider = new Swiper('.main_slider', {
+  var mainSlider = new Swiper('.main_visual .main_slider', {
     loop: true,
     effect: 'fade',
+    touchEventsTarget: 'wrapper',
     speed: 800,
     autoplay: {
       delay: 3000,
@@ -130,13 +131,14 @@ $(function () {
   var infoNum = $('.program_info_slider').find('.swiper-slide');
   var postNum = $('.program_post_slider').find('.swiper-slide');
 
-  var programInfoSlider = new Swiper('.program_info_slider', {
+  var programInfoSlider = new Swiper('.main_program .program_info_slider', {
     loop: true,
     loopedSlides: infoNum.length,
     effect: 'fade',
     fadeEffect: {
       crossFade: true,
     },
+    touchEventsTarget: 'wrapper',
     speed: 500,
     slidesPerView: 1,
     spaceBetween: 40,
@@ -155,7 +157,7 @@ $(function () {
     },
   });
 
-  $('.program_info_slider .btn_pause').on('click', function () {
+  $('.main_program .btn_pause').on('click', function () {
     $(this).toggleClass('on');
 
     if ($(this).hasClass('on')) {
@@ -169,10 +171,21 @@ $(function () {
 
   var programPostSlider = new Swiper('.program_post_slider', {
     loop: true,
+    touchEventsTarget: 'wrapper',
     loopedSlides: postNum.length,
     slidesPerView: 'auto',
     spaceBetween: 59,
-    speed: 500,
+    speed: 480,
+    breakpoints: {
+      767: {
+        slidesPerView: 2,
+        spaceBetween: 50,
+      },
+      600: {
+        slidesPerView: 1,
+        spaceBetween: 50,
+      },
+    },
   });
 
   programInfoSlider.controller.control = programPostSlider;
@@ -193,14 +206,6 @@ $(function () {
     autoplay: {
       delay: 5000,
     },
-    breakpoints: {
-      1000: {
-        slidesPerView: 2,
-        spaceBetween: 20,
-        effect: 'slide',
-        loop: true,
-      },
-    },
 
     navigation: {
       nextEl: '.swiper-button-next',
@@ -208,30 +213,76 @@ $(function () {
     },
   });
 
-  // function responsiveSwiper() {
-  //   if (vw >= 1000) {
-  //     collectionoSlider = new Swiper('.collection_slider', {
-  //       effect: 'fade',
-  //       fadeEffect: {
-  //         crossFade: true,
-  //       },
-  //     });
-  //   } else if (vw < 1000) {
-  //     collectionoSlider = new Swiper('.collection_slider', {
-  //       effect: 'slide',
-  //       fadeEffect: {
-  //         crossFade: false,
-  //       },
-  //       slidesPerView: 2,
-  //     });
-  //   }
-  // }
-  // responsiveSwiper();
+  responsiveSwiper();
 
-  // window.addEventListener('resize', function () {
-  //   vw = this.window.innerWidth;
-  //   responsiveSwiper();
-  // });
+  function responsiveSwiper() {
+    if (vw >= 1000) {
+      // 페이드 효과
+      collectionoSlider.destroy();
+      collectionoSlider = new Swiper('.collection_slider', {
+        loop: true,
+        effect: 'fade',
+        fadeEffect: {
+          crossFade: true,
+        },
+        speed: 500,
+        slidesPerView: 1,
+        spaceBetween: 15,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    } else if (570 < vw && vw < 1000) {
+      // 슬라이드 효과
+      collectionoSlider.destroy();
+      collectionoSlider = new Swiper('.collection_slider', {
+        loop: true,
+        effect: 'slide',
+        slidesPerView: 2,
+        spaceBetween: 15,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    } else if (vw < 570) {
+      collectionoSlider.destroy();
+      collectionoSlider = new Swiper('.collection_slider', {
+        loop: true,
+        effect: 'fade',
+        fadeEffect: {
+          crossFade: true,
+        },
+        slidesPerView: 1,
+        spaceBetween: 15,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    }
+  }
+
+  window.addEventListener('resize', function () {
+    vw = window.innerWidth;
+    responsiveSwiper();
+  });
 
   $('.collection_wrap .btn_pause').on('click', function () {
     $(this).toggleClass('on');
